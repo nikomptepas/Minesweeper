@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Démineur</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="play">Jouer</string>
+    <string name="scores">Scores</string>
+    <string name="rules">Règles</string>
+</resources>
