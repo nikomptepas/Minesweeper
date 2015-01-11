@@ -6,4 +6,15 @@
     <string name="play">Jouer</string>
     <string name="scores">Scores</string>
     <string name="rules">Règles</string>
+
+    <string name="object_title">Objectif</string>
+    <string name="object">Découvrez les cases vides en évitant les mines. Plus vite vous aurez terminé, meilleur sera votre score.</string>
+
+    <string name="board_title">Plateau</string>
+    <string name="board">Le Démineur offre un choix de trois plateaux standard de difficulté croissante.\n\n Vous pouvez également créer un plateau personnalisé en cliquant dans le menu Jouer sur Options.</string>
+
+    <string name="howToPlay_title">Comment jouer</string>
+    <string name="howToPlay">Les règles du Démineur sont simples :\n\n - Si vous découvrez une mine, le jeu prend fin.\n - Si vous découvrez une case vide, vous pouvez continuer à jouer.\n - Si vous découvrez un chiffre, celui-ci indique le nombre de mines dissimulées dans les huit carrés qui l’entourent ; ces informations vous aident à déterminer quelles sont les cases voisines sur lesquelles vous pouvez cliquer sans risque.</string>
+
+
 </resources>

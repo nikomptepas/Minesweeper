@@ -7,4 +7,18 @@
     <string name="play">Play</string>
     <string name="scores">Scores</string>
     <string name="rules">Rules</string>
+    <string name="title_activity_rules">RulesActivity</string>
+
+
+    <string name="object_title">The object</string>
+    <string name="object">Find the empty squares while avoiding the mines. The faster you clear the board, the better your score.</string>
+
+    <string name="board_title">The board</string>
+    <string name="board">Minesweeper has three standard boards to choose from, each progressively more difficult.\n\n You can also create a custom board by clicking the Game menu, and then Custom.</string>
+
+    <string name="howToPlay_title">How to play</string>
+    <string name="howToPlay">The rules in Minesweeper are simple:\n\n - Uncover a mine, and the game ends.\n - Uncover an empty square, and you keep playing.\n - Uncover a number, and it tells you how many mines lay hidden in the eight surrounding squares</string>
+
+
+
 </resources>
