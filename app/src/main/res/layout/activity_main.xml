@@ -53,6 +53,12 @@
             style="@style/Btn_Menu"
             />
 
+        <ListView
+            android:id="@+id/listView_scores"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+        </ListView>
+
 
     </LinearLayout>
 
