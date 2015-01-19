@@ -1,9 +1,11 @@
 package com.example.ancelnicolas91.minesweeper;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +63,42 @@ public class ScoresActivity extends android.app.Activity {
 
         listViewScores.setAdapter(adapter);*/
 
+        Cursor cursor = scoresBDD.getAllScores();
 
+        // The desired columns to be bound
+        String[] columns = new String[] {
+                ScoresBDD.COL_ID,
+                ScoresBDD.COL_PSEUDO,
+                ScoresBDD.COL_CASES,
+                ScoresBDD.COL_MINES,
+                ScoresBDD.COL_TIME,
+                ScoresBDD.COL_WIN
+        };
+
+        // the XML defined views which the data will be bound to
+        int[] to = new int[] {
+                R.id.textView_id,
+                R.id.textView_pseudo,
+                R.id.textView_cases,
+                R.id.textView_mines,
+                R.id.textView_time,
+                R.id.textView_win
+        };
+
+        SimpleCursorAdapter dataAdapter;
+
+        // create the adapter using the cursor pointing to the desired data
+        //as well as the layout information
+        dataAdapter = new SimpleCursorAdapter(
+                this, R.layout.activity_scores,
+                cursor,
+                columns,
+                to,
+                0);
+
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        // Assign adapter to ListView
+        listView.setAdapter(dataAdapter);
 
 
         scoresBDD.close();

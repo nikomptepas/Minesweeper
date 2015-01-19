@@ -15,19 +15,19 @@ public class ScoresBDD {
     private static final int VERSION_BDD = 1;
     private static final String NAME_BDD = "scores.db";
 
-    private static final String TABLE_SCORES = "table_scores";
-    private static final String COL_ID = "ID";
-    private static final int NUM_COL_ID = 0;
-    private static final String COL_PSEUDO = "Pseudo";
-    private static final int NUM_COL_PSEUDO = 1;
-    private static final String COL_CASES = "Cases";
-    private static final int NUM_COL_CASES = 2;
-    private static final String COL_MINES = "Mines";
-    private static final int NUM_COL_MINES = 3;
-    private static final String COL_TIME = "Time";
-    private static final int NUM_COL_TIME = 4;
-    private static final String COL_WIN = "Win";
-    private static final int NUM_COL_WIN = 5;
+    public static final String TABLE_SCORES = "table_scores";
+    public static final String COL_ID = "ID";
+    public static final int NUM_COL_ID = 0;
+    public static final String COL_PSEUDO = "Pseudo";
+    public static final int NUM_COL_PSEUDO = 1;
+    public static final String COL_CASES = "Cases";
+    public static final int NUM_COL_CASES = 2;
+    public static final String COL_MINES = "Mines";
+    public static final int NUM_COL_MINES = 3;
+    public static final String COL_TIME = "Time";
+    public static final int NUM_COL_TIME = 4;
+    public static final String COL_WIN = "Win";
+    public static final int NUM_COL_WIN = 5;
 
     private SQLiteDatabase bdd;
 
