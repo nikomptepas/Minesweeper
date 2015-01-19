@@ -15,8 +15,9 @@ public class ScoresBDD {
     private static final int VERSION_BDD = 1;
     private static final String NAME_BDD = "scores.db";
 
+    public static final String KEY_ROWID = "_id";
     public static final String TABLE_SCORES = "table_scores";
-    public static final String COL_ID = "ID";
+    public static final String _ID = "_id";
     public static final int NUM_COL_ID = 0;
     public static final String COL_PSEUDO = "Pseudo";
     public static final int NUM_COL_PSEUDO = 1;
@@ -75,12 +76,12 @@ public class ScoresBDD {
         values.put(COL_MINES, scores.getMines());
         values.put(COL_TIME, scores.getTime());
         values.put(COL_WIN, scores.getWin());
-        return bdd.update(TABLE_SCORES, values, COL_ID + " = " +id, null);
+        return bdd.update(TABLE_SCORES, values, _ID + " = " +id, null);
     }
 
     public int removeScoreWithID(int id){
         //Suppression d'un livre de la BDD grâce à l'ID
-        return bdd.delete(TABLE_SCORES, COL_ID + " = " +id, null);
+        return bdd.delete(TABLE_SCORES, _ID + " = " +id, null);
     }
 
     //Cette méthode permet de convertir un cursor en un score
@@ -110,7 +111,7 @@ public class ScoresBDD {
 
     //Cette méthode permet de convertir un cursor en un score
     public Cursor getAllScores(){
-        Cursor mCursor = bdd.query(TABLE_SCORES, new String[] {COL_ID,
+        Cursor mCursor = bdd.query(TABLE_SCORES, new String[] {KEY_ROWID,
                         COL_PSEUDO, COL_CASES, COL_MINES, COL_TIME, COL_WIN},
                 null, null, null, null, null);
 

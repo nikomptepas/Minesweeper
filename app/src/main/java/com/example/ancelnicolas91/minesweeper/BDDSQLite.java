@@ -11,7 +11,8 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 public class BDDSQLite extends SQLiteOpenHelper {
 
     private static final String TABLE_SCORES = "table_scores";
-    private static final String COL_ID = "ID";
+    public static final String KEY_ROWID = "_id";
+    private static final String COL_ID = "_id";
     private static final String COL_PSEUDO = "Pseudo";
     private static final String COL_CASES = "Cases";
     private static final String COL_MINES = "Mines";
@@ -19,7 +20,7 @@ public class BDDSQLite extends SQLiteOpenHelper {
     private static final String COL_WIN = "Win";
 
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_SCORES + " ("
-            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_PSEUDO + " TEXT NOT NULL, "
+            + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_PSEUDO + " TEXT NOT NULL, "
             + COL_CASES + " INTEGER NOT NULL, " + COL_MINES + " INTEGER NOT NULL,"+ COL_TIME +
             " TEXT NOT NULL,"+ COL_WIN + " BOOLEAN NOT NULL);";
 

@@ -67,7 +67,6 @@ public class ScoresActivity extends android.app.Activity {
 
         // The desired columns to be bound
         String[] columns = new String[] {
-                ScoresBDD.COL_ID,
                 ScoresBDD.COL_PSEUDO,
                 ScoresBDD.COL_CASES,
                 ScoresBDD.COL_MINES,
@@ -77,7 +76,6 @@ public class ScoresActivity extends android.app.Activity {
 
         // the XML defined views which the data will be bound to
         int[] to = new int[] {
-                R.id.textView_id,
                 R.id.textView_pseudo,
                 R.id.textView_cases,
                 R.id.textView_mines,

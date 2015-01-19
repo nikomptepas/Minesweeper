@@ -5,7 +5,7 @@ package com.example.ancelnicolas91.minesweeper;
  */
 public class Scores {
 
-    private int id;
+    private int _id;
     private String pseudo;
     private Integer cases;
     private Integer mines;
@@ -23,11 +23,11 @@ public class Scores {
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = _id;
     }
 
     public String getPseudo() {
