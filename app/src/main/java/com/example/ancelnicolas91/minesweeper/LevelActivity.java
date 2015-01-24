@@ -24,19 +24,19 @@ public class LevelActivity extends Activity {
 
         switch (v.getId()) {
             case R.id.btn_easy:
-                sendBundle.putInt("Rows", 9);
-                sendBundle.putInt("Cols", 9);
-                sendBundle.putInt("Mines", 10);
+                sendBundle.putInt("Rows", 7);
+                sendBundle.putInt("Cols", 7);
+                sendBundle.putInt("Mines", 7);
                 break;
             case R.id.btn_normal:
-                sendBundle.putInt("Rows", 16);
-                sendBundle.putInt("Cols", 16);
-                sendBundle.putInt("Mines", 40);
+                sendBundle.putInt("Rows", 11);
+                sendBundle.putInt("Cols", 11);
+                sendBundle.putInt("Mines", 30);
                 break;
             case R.id.btn_hard:
-                sendBundle.putInt("Rows", 21);
-                sendBundle.putInt("Cols", 21);
-                sendBundle.putInt("Mines", 90);
+                sendBundle.putInt("Rows", 16);
+                sendBundle.putInt("Cols", 16);
+                sendBundle.putInt("Mines", 60);
                 break;
         }
 

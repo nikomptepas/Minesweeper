@@ -20,5 +20,10 @@
     <string name="howToPlay">The rules in Minesweeper are simple:\n\n - Uncover a mine, and the game ends.\n - Uncover an empty square, and you keep playing.\n - Uncover a number, and it tells you how many mines lay hidden in the eight surrounding squares</string>
 
 
+    <string name="lvl_difficulty">Level of difficulty</string>
+    <string name="lvl_easy">Easy</string>
+    <string name="lvl_normal">Normal</string>
+    <string name="lvl_hard">Hard</string>
+    <string name="lvl_custom">Custom</string>
 
 </resources>

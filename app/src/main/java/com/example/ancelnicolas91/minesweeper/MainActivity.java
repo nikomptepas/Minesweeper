@@ -26,6 +26,18 @@ public class MainActivity extends android.app.Activity {
             }
         });
 
+        btn_play = (Button)findViewById(R.id.btn_play);
+
+        btn_play.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), LevelActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
     }
 
