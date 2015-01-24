@@ -26,16 +26,6 @@ public class MainActivity extends android.app.Activity {
             }
         });
 
-        btn_scores = (Button)findViewById(R.id.btn_scores);
-
-        btn_scores.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), ScoresActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 

@@ -20,10 +20,6 @@
             android:name=".RulesActivity"
             android:label="@string/title_activity_rules" >
         </activity>
-        <activity
-            android:name=".ScoresActivity"
-            android:label="@string/title_activity_scores" >
-        </activity>
     </application>
 
 </manifest>

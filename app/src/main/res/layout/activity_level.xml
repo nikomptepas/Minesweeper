@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        android:id="@+id/scrollMenu">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/lvl_difficulty"
+                android:id="@+id/textView6"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <Button
+                android:background="@drawable/red_button"
+                android:text="@string/lvl_easy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_easy"
+                style="@style/Btn_Menu"
+                android:onClick="playGameWithParams"
+                />
+
+            <Button
+                android:background="@drawable/red_button"
+                android:text="@string/lvl_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_normal"
+                style="@style/Btn_Menu"
+                android:onClick="playGameWithParams"
+                />
+
+            <Button
+                android:background="@drawable/red_button"
+                android:text="@string/lvl_hard"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_hard"
+                style="@style/Btn_Menu"
+                android:onClick="playGameWithParams"
+                />
+
+            <Button
+                android:background="@drawable/red_button"
+                android:text="@string/lvl_custom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_custom"
+                style="@style/Btn_Menu"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

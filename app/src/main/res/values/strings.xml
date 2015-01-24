@@ -8,7 +8,6 @@
     <string name="scores">Scores</string>
     <string name="rules">Rules</string>
     <string name="title_activity_rules">RulesActivity</string>
-    <string name="title_activity_scores">ScoresActivity</string>
 
 
     <string name="object_title">The object</string>

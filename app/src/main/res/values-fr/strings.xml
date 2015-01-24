@@ -24,4 +24,13 @@
       Type here to filter&#8230;
      </string>
 
+    <string name="lvl_difficulty">Niveau de difficulté</string>
+
+    <string name="lvl_easy">Facile</string>
+    <string name="lvl_normal">Normal</string>
+    <string name="lvl_hard">Difficile</string>
+    <string name="lvl_custom">Personnaliser</string>
+
+
+
 </resources>
