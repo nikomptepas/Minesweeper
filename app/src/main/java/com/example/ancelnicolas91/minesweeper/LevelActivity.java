@@ -46,4 +46,9 @@ public class LevelActivity extends Activity {
         startActivity(intent);
     }
 
+    public void goToCustomParameters(View v){
+        Intent intent = new Intent(this, CustomActivity.class);
+        startActivity(intent);
+    }
+
 }

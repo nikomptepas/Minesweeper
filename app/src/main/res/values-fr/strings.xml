@@ -34,6 +34,10 @@
     <string name="winner">Tu as gagné !</string>
     <string name="looser">Tu as perdu !</string>
 
+    <string name="nbrCols">Nombre de colonnes :</string>
+    <string name="nbrRows">Nombre de lignes :</string>
+    <string name="nbrMines">Nombre de mines :</string>
+
 
 
 </resources>

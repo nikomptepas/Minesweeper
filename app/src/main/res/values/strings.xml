@@ -8,25 +8,24 @@
     <string name="scores">Scores</string>
     <string name="rules">Rules</string>
     <string name="title_activity_rules">RulesActivity</string>
-
-
     <string name="object_title">The object</string>
     <string name="object">Find the empty squares while avoiding the mines. The faster you clear the board, the better your score.</string>
-
     <string name="board_title">The board</string>
     <string name="board">Minesweeper has three standard boards to choose from, each progressively more difficult.\n\n You can also create a custom board by clicking the Game menu, and then Custom.</string>
-
     <string name="howToPlay_title">How to play</string>
     <string name="howToPlay">The rules in Minesweeper are simple:\n\n - Uncover a mine, and the game ends.\n - Uncover an empty square, and you keep playing.\n - Uncover a number, and it tells you how many mines lay hidden in the eight surrounding squares</string>
-
-
     <string name="lvl_difficulty">Level of difficulty</string>
     <string name="lvl_easy">Easy</string>
     <string name="lvl_normal">Normal</string>
     <string name="lvl_hard">Hard</string>
     <string name="lvl_custom">Custom</string>
-
     <string name="winner">You win!</string>
     <string name="looser">You loose!</string>
+    <string name="title_activity_custom">CustomActivity</string>
+
+
+    <string name="nbrCols">Number of columns :</string>
+    <string name="nbrRows">Number of rows :</string>
+    <string name="nbrMines">Number of mines :</string>
 
 </resources>

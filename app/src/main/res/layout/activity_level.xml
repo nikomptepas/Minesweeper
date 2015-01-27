@@ -13,9 +13,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center_vertical"
+            android:paddingTop="20dp"
             >
 
             <TextView
@@ -24,7 +24,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/lvl_difficulty"
                 android:id="@+id/textView6"
-                android:layout_marginBottom="20dp"
+                android:paddingBottom="20dp"
                 android:layout_gravity="center_horizontal"
                 />
 
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_custom"
                 style="@style/Btn_Menu"
-                />
+                android:onClick="goToCustomParameters" />
 
 
         </LinearLayout>
