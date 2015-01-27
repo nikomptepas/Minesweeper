@@ -1,11 +1,21 @@
 package com.example.ancelnicolas91.minesweeper;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,50 +32,23 @@ public class ScoresActivity extends android.app.Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
 
-        //Création d'une instance de ma classe LivresBDD
+        //Création d'une instance de ma classe SCORESBDD
         ScoresBDD scoresBDD = new ScoresBDD(this);
 
-        //Création d'un livre
-        Scores score = new Scores("JUUU", 20, 30, "05:33", Boolean.TRUE);
+        //Création d'un SCORE
+        Scores score1 = new Scores("JUUU", 20, 30, "05:33", Boolean.TRUE);
+        Scores score2 = new Scores("TEST", 24, 24, "10:83", Boolean.FALSE);
 
         //On ouvre la base de données pour écrire dedans
         scoresBDD.open();
-        //On insère le livre que l'on vient de créer
-        scoresBDD.insertScore(score);
+        //On insère le score que l'on vient de créer
+        scoresBDD.insertScore(score1);
+        scoresBDD.insertScore(score2);
 
-        //List<String> myScores = new ArrayList<String>();
-        //myScores = scoresBDD.getAllScores();
-
-        ListView listViewScores = (ListView) findViewById(R.id.listView_scores);
-
-
-       /*
-        ListView listViewScores = (ListView) findViewById(R.id.listView_scores);
-
-
-
-
-
-        String[] values = new String[] { "Device",
-                "Géo localisation", "Accéléromètre",
-                "Navigateur internet", "Dialogues", "Album photos",
-                "Connexion réseau", "Gestion des fichiers",
-                "Carnet de contacts" };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, values);
-
-
-        listViewScores.setAdapter(adapter);
-
-        */
-       /* List<Scores> myListScores = new ArrayList<Scores>();
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, myScores);
-
-        listViewScores.setAdapter(adapter);*/
-
+        // On récupère tout les scores
         Cursor cursor = scoresBDD.getAllScores();
 
-        // The desired columns to be bound
+        // On définit les colonnes a récuperer
         String[] columns = new String[] {
                 ScoresBDD.COL_PSEUDO,
                 ScoresBDD.COL_CASES,
@@ -74,31 +57,59 @@ public class ScoresActivity extends android.app.Activity {
                 ScoresBDD.COL_WIN
         };
 
-        // the XML defined views which the data will be bound to
+        // On définit les layouts a remplir
         int[] to = new int[] {
                 R.id.textView_pseudo,
                 R.id.textView_cases,
                 R.id.textView_mines,
                 R.id.textView_time,
-                R.id.textView_win
+                R.id.textView_win,
+
         };
 
         SimpleCursorAdapter dataAdapter;
 
-        // create the adapter using the cursor pointing to the desired data
-        //as well as the layout information
+        // Adaptateur pour matcher entre la BDD et la listview
         dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.activity_scores,
+                this, R.layout.scores_info,
                 cursor,
                 columns,
                 to,
                 0);
 
         ListView listView = (ListView) findViewById(R.id.listView1);
-        // Assign adapter to ListView
         listView.setAdapter(dataAdapter);
 
-
+        // Fermeture de la BDD
         scoresBDD.close();
+
+        View v = listView.getChildAt(0);
+        // if your row base layout is LinearLayout
+        // get it and find in this layout your TextView by id
+
+        if(v instanceof LinearLayout){
+            TextView textView_Win = (TextView) v.findViewById(R.id.textView_win);
+            ImageView imgViewYes = (ImageView) v.findViewById(R.id.imgView_yes);
+            ImageView imgViewNo = (ImageView) v.findViewById(R.id.imgView_no);
+
+            if (textView_Win.getText().toString() == "0")
+            {
+                imgViewYes.setVisibility(View.INVISIBLE);
+            }
+            else
+            {
+                imgViewNo.setVisibility(View.INVISIBLE);
+            }
+        }
+
+
+
+
+
+        //textViewWin.setVisibility(View.INVISIBLE);
+
+
+
+
     }
 }

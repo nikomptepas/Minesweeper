@@ -26,7 +26,7 @@ public class Scores {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(int _id) {
         this._id = _id;
     }
 

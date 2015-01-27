@@ -28,6 +28,7 @@ public class BDDSQLite extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         //on créé la table à partir de la requête écrite dans la variable CREATE_BDD

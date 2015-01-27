@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ScoresBDD {
 
-    private static final int VERSION_BDD = 1;
+    private static final int VERSION_BDD = 2;
     private static final String NAME_BDD = "scores.db";
 
     public static final String KEY_ROWID = "_id";

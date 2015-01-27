@@ -20,13 +20,14 @@
             android:name=".RulesActivity"
             android:label="@string/title_activity_rules" >
         </activity>
-        <activity android:name=".LevelActivity" >
-        </activity>
-        <activity android:name=".GameActivity" >
+        <activity
+            android:name=".ScoresActivity">
         </activity>
         <activity
-            android:name=".CustomActivity"
-            android:label="@string/title_activity_custom" >
+            android:name=".LevelActivity">
+        </activity>
+        <activity
+            android:name=".GameActivity">
         </activity>
     </application>
 

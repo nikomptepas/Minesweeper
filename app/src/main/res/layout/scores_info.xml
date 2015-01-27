@@ -5,34 +5,128 @@
     android:orientation="vertical"
     android:padding="6dip" >
 
-    <TextView
-        android:id="@+id/textView_id"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
+    <!-- PSEUDO -->
     <TextView
         android:id="@+id/textView_pseudo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"/>
 
+    <!-- IMAGE DE LA CASE -->
+    <ImageView
+        android:id="@+id/imgView_cell_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cells_0"
+        android:adjustViewBounds="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/textView_pseudo"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- NOMBRE DE CASE -->
     <TextView
         android:id="@+id/textView_cases"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgView_cell_0"
+        android:layout_below="@+id/textView_pseudo"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"/>
 
+    <!-- IMAGE DE LA MINE -->
+    <ImageView
+        android:id="@+id/imgView_mine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mine"
+        android:adjustViewBounds="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:scaleType="fitCenter"
+        android:layout_toRightOf="@+id/textView_cases"
+        android:layout_below="@+id/textView_pseudo"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- NOMBRE DE MINE -->
     <TextView
         android:id="@+id/textView_mines"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgView_mine"
+        android:layout_below="@+id/textView_pseudo"
+        android:layout_marginBottom="5dp"
+        />
 
+    <!-- IMAGE DU TEMPS -->
+    <ImageView
+        android:id="@+id/imgView_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/time"
+        android:adjustViewBounds="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/imgView_cell_0"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- TEMPS -->
     <TextView
         android:id="@+id/textView_time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgView_time"
+        android:layout_below="@+id/imgView_cell_0"
+        android:layout_marginBottom="5dp"/>
 
+    <!-- GAGNER OU PERDU -->
     <TextView
         android:id="@+id/textView_win"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_time"
+        android:layout_alignBottom="@+id/textView_time"
+        android:layout_toRightOf="@+id/textView_time"
+        android:text="TextView"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- IMAGE DU TEMPS -->
+    <ImageView
+        android:id="@+id/imgView_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/valid"
+        android:adjustViewBounds="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBaseline="@+id/textView_time"
+        android:layout_alignBottom="@+id/textView_time"
+        android:layout_toRightOf="@+id/textView_time"
+        android:text="TextView"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- IMAGE DU TEMPS -->
+    <ImageView
+        android:id="@+id/imgView_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/no"
+        android:adjustViewBounds="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBaseline="@+id/textView_time"
+        android:layout_alignBottom="@+id/textView_time"
+        android:layout_toRightOf="@+id/textView_time"
+        android:text="TextView"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
 
 </RelativeLayout>
