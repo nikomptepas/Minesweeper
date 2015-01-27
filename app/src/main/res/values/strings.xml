@@ -26,4 +26,7 @@
     <string name="lvl_hard">Hard</string>
     <string name="lvl_custom">Custom</string>
 
+    <string name="winner">You win!</string>
+    <string name="looser">You loose!</string>
+
 </resources>

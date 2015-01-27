@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal"
-    android:clickable="true"
-    android:onClick="resetGame">
+    android:clickable="true">
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -60,16 +59,16 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="40dp"
-                        android:src="@drawable/flag"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/mine"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="00:00"
-                        android:id="@+id/nbrFlag" />
+                        android:text="0"
+                        android:id="@+id/countMines" />
                 </LinearLayout>
 
 

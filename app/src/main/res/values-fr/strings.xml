@@ -31,6 +31,9 @@
     <string name="lvl_hard">Difficile</string>
     <string name="lvl_custom">Personnaliser</string>
 
+    <string name="winner">Tu as gagné !</string>
+    <string name="looser">Tu as perdu !</string>
+
 
 
 </resources>
