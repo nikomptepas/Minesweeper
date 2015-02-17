@@ -3,9 +3,6 @@ package com.example.ancelnicolas91.minesweeper;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by ancelnicolas91 on 27/01/15.
- */
 public class Cell implements Parcelable{
     private int _x;
     private int _y;

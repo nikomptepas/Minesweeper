@@ -1,57 +1,43 @@
 package com.example.ancelnicolas91.minesweeper;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Loader;
 import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Justine on 18/01/2015.
- */
 public class ScoresActivity extends android.app.Activity {
 
-    private ScoresAdapter dbHelper;
     private ScoresBDD scoresBDD;
     private SimpleCursorAdapter dataAdapter;
     ListView listView;
     long lastID;
     EditText inputSearch;
+    private String newPseudo;
+    private EditText mUserText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
+
+        if(savedInstanceState != null)
+        {
+            newPseudo = savedInstanceState.getString("newPseudo");
+        }
 
         lastID = 0;
 
@@ -83,7 +69,6 @@ public class ScoresActivity extends android.app.Activity {
 
         };
 
-
         // Adaptateur pour matcher entre la BDD et la listview
         dataAdapter = new SimpleCursorAdapter(
                 this, R.layout.scores_info,
@@ -98,44 +83,61 @@ public class ScoresActivity extends android.app.Activity {
         registerForContextMenu(listView);
 
         // Capture Text in EditText
-        inputSearch.addTextChangedListener(new TextWatcher() {
-
+        inputSearch.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void afterTextChanged(Editable arg0) {
-
+            public void afterTextChanged(Editable arg0)
+            {
                 String text = inputSearch.getText().toString().toLowerCase(Locale.getDefault());
                 dataAdapter.swapCursor(scoresBDD.getScoreByPseudo(text));
             }
 
+
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1,
-                                          int arg2, int arg3) {
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+            {
                 // TODO Auto-generated method stub
             }
 
             @Override
-            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-                                      int arg3) {
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+            {
                 // TODO Auto-generated method stub
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
                 openContextMenu(view);
             }
         });
 
     }
 
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
+    {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.context_menu_scores, menu);
     }
 
-    public boolean onContextItemSelected(MenuItem item) {
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        if(mUserText != null)
+        {
+            newPseudo = mUserText.getText().toString();
+            savedInstanceState.putString("newPseudo",newPseudo);
+        }
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public boolean onContextItemSelected(MenuItem item)
+    {
         AdapterView.AdapterContextMenuInfo infoMenu =(AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
 
         switch (item.getItemId()) {
@@ -150,9 +152,7 @@ public class ScoresActivity extends android.app.Activity {
                 // On refresh la listView
                 dataAdapter.swapCursor(scoresBDD.getAllScores());
 
-                Toast.makeText(this, "DELETE",
-                        Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, "DELETE", Toast.LENGTH_SHORT).show();
 
                 return true;
             default:
@@ -168,14 +168,15 @@ public class ScoresActivity extends android.app.Activity {
         alert.setTitle("Edit Pseudo");
         alert.setMessage("Enter new pseudo :");
         alert.setView(textEntryView);
+        mUserText = (EditText) textEntryView.findViewById(R.id.newPseudo);
+        mUserText.setText(newPseudo);
 
+        // Si l'utilisateur clique sur OK
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
                 // On récupère ce qui a été saisie par l'utilisateur
-                EditText mUserText;
-                mUserText = (EditText) textEntryView.findViewById(R.id.newPseudo);
-                String newPseudo = mUserText.getText().toString();
+                newPseudo = mUserText.getText().toString();
 
                 // On modifie le pseudo dans la BDD
                 scoresBDD.updatePseudoById(lastID,newPseudo);
@@ -187,6 +188,7 @@ public class ScoresActivity extends android.app.Activity {
             }
         });
 
+        // Si il clique sur Cancel
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {

@@ -1,8 +1,5 @@
 package com.example.ancelnicolas91.minesweeper;
 
-/**
- * Created by Justine on 18/01/2015.
- */
 public class Scores {
 
     private int _id;

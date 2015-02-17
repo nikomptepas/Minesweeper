@@ -4,10 +4,6 @@ import android.os.Parcel;
 
 import java.util.ArrayList;
 
-/**
- * Created by ancelnicolas91 on 27/01/15.
- */
-
 public class Grid implements Parcelable{
     private ArrayList<Cell> _tab;
     private int _width;
@@ -25,7 +21,6 @@ public class Grid implements Parcelable{
         _tab = new ArrayList<Cell>();
 
         int countMine = 0;
-
 
         for (int i = 0; i < _height; i++) {
             for (int j = 0; j < _width; j++) {

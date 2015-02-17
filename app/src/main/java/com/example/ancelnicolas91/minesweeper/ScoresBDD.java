@@ -1,8 +1,5 @@
 package com.example.ancelnicolas91.minesweeper;
 
-/**
- * Created by Justine on 18/01/2015.
- */
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -34,12 +31,14 @@ public class ScoresBDD {
 
     private BDDSQLite myBDDSQLite;
 
-    public ScoresBDD(Context context){
+    public ScoresBDD(Context context)
+    {
         //On créer la BDD et sa table
         myBDDSQLite = new BDDSQLite(context, NAME_BDD, null, VERSION_BDD);
     }
 
-    public void open(){
+    public void open()
+    {
         //on ouvre la BDD en écriture
         bdd = myBDDSQLite.getWritableDatabase();
     }
@@ -84,14 +83,6 @@ public class ScoresBDD {
         bdd.delete(TABLE_SCORES, _ID + " = " +id, null);
     }
 
-    public Cursor queueAll() {
-        return bdd.rawQuery("SELECT _id, Pseudo, Cases, Mines, Time, Win FROM table_scores ;", null);
-    }
-
-    public Cursor getScoreById(int id) {
-        return bdd.rawQuery("SELECT _id, Pseudo, Cases, Mines, Time, Win FROM table_scores where _id="+ id +";", null);
-    }
-
     public void updatePseudoById(long id, String newPseudo) {
         Cursor c =  bdd.rawQuery("SELECT _id, Pseudo, Cases, Mines, Time, Win FROM table_scores where _id="+ id +";", null);
         c.moveToFirst();
@@ -104,31 +95,6 @@ public class ScoresBDD {
         tmpScore.setTime(c.getString(NUM_COL_TIME));
         tmpScore.setWin(c.getString(NUM_COL_WIN));
         updateScore(c.getInt(NUM_COL_ID),tmpScore);
-    }
-
-    //Cette méthode permet de convertir un cursor en un score
-    private Scores cursorToScore(Cursor c){
-        //si aucun élément n'a été retourné dans la requête, on renvoie null
-        if (c.getCount() == 0)
-            return null;
-
-        //Sinon on se place sur le premier élément
-        c.moveToFirst();
-        //On créé un livre
-        Scores scores = new Scores();
-        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-        scores.setId(c.getInt(NUM_COL_ID));
-        scores.setPseudo(c.getString(NUM_COL_PSEUDO));
-        scores.setCases(c.getInt(NUM_COL_CASES));
-        scores.setMines(c.getInt(NUM_COL_MINES));
-        scores.setTime(c.getString(NUM_COL_TIME));
-        scores.setWin(c.getString(NUM_COL_WIN));
-
-        //On ferme le cursor
-        c.close();
-
-        //On retourne le livre
-        return scores;
     }
 
     //Cette méthode permet de convertir un cursor en un score
