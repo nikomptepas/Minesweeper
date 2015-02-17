@@ -16,12 +16,8 @@
     <string name="howToPlay_title">Comment jouer</string>
     <string name="howToPlay">Les règles du Démineur sont simples :\n\n - Si vous découvrez une mine, le jeu prend fin.\n - Si vous découvrez une case vide, vous pouvez continuer à jouer.\n - Si vous découvrez un chiffre, celui-ci indique le nombre de mines dissimulées dans les huit carrés qui l’entourent ; ces informations vous aident à déterminer quelles sont les cases voisines sur lesquelles vous pouvez cliquer sans risque.</string>
 
-    <string name="some_text">
-         Some North American Countries!
-     </string>
-
      <string name="some_hint">
-      Type here to filter&#8230;
+     Recherche un pseudo&#8230;
      </string>
 
     <string name="lvl_difficulty">Niveau de difficulté</string>

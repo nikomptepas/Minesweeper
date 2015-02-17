@@ -84,49 +84,12 @@
         android:layout_below="@+id/imgView_cell_0"
         android:layout_marginBottom="5dp"/>
 
-    <!-- GAGNER OU PERDU -->
+    <!-- GAGNE OU PERDU -->
     <TextView
         android:id="@+id/textView_win"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView_time"
-        android:layout_alignBottom="@+id/textView_time"
-        android:layout_toRightOf="@+id/textView_time"
-        android:text="TextView"
-        android:layout_marginBottom="5dp"/>
-
-    <!-- IMAGE DU TEMPS -->
-    <ImageView
-        android:id="@+id/imgView_yes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/valid"
-        android:adjustViewBounds="true"
-        android:maxWidth="20dp"
-        android:maxHeight="20dp"
-        android:scaleType="fitCenter"
-        android:layout_alignBaseline="@+id/textView_time"
-        android:layout_alignBottom="@+id/textView_time"
-        android:layout_toRightOf="@+id/textView_time"
-        android:text="TextView"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"/>
-
-    <!-- IMAGE DU TEMPS -->
-    <ImageView
-        android:id="@+id/imgView_no"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/no"
-        android:adjustViewBounds="true"
-        android:maxWidth="20dp"
-        android:maxHeight="20dp"
-        android:scaleType="fitCenter"
-        android:layout_alignBaseline="@+id/textView_time"
-        android:layout_alignBottom="@+id/textView_time"
-        android:layout_toRightOf="@+id/textView_time"
-        android:text="TextView"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

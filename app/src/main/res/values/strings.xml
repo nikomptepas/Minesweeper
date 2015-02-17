@@ -28,4 +28,8 @@
     <string name="nbrRows">Number of rows :</string>
     <string name="nbrMines">Number of mines :</string>
 
+     <string name="some_hint">
+      Search a nickname&#8230;
+     </string>
+
 </resources>

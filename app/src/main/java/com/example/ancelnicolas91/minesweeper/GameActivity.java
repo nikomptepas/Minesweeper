@@ -41,6 +41,11 @@ public class GameActivity extends Activity implements View.OnClickListener, View
     private boolean winner;
     private int mineOfDeath;
 
+    private ScoresBDD scoresBDD;
+    private String timerValueString;
+
+    private String nickName;
+
     private TextView timerValue;
     private long startTime = 0L;
     private Handler customHandler = new Handler();
@@ -52,6 +57,7 @@ public class GameActivity extends Activity implements View.OnClickListener, View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        scoresBDD = new ScoresBDD(this);
         setContentView(R.layout.activity_game);
 
         gameover = false;
@@ -73,6 +79,7 @@ public class GameActivity extends Activity implements View.OnClickListener, View
             winner = savedInstanceState.getByte("winner")  != 0;
             mineOfDeath = savedInstanceState.getInt("mineOfDeath");
             timeSwapBuff = savedInstanceState.getLong("timeSwapBuff");
+            nickName = savedInstanceState.getString("nickName");
 
         }
         else{
@@ -145,13 +152,17 @@ public class GameActivity extends Activity implements View.OnClickListener, View
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         Log.d("Niko", "SAVEINSTANCE -mygrid");
         savedInstanceState.putParcelable("myGrid", myGrid);
+
         savedInstanceState.putByte("gameover",(byte) (gameover ? 1 : 0));
         savedInstanceState.putByte("winner",(byte) (winner ? 1 : 0));
         savedInstanceState.putInt("mineOfDeath",mineOfDeath);
+        savedInstanceState.putString("nickName",nickName);
+
 
         timeSwapBuff += timeInMilliseconds;
         customHandler.removeCallbacks(updateTimerThread);
         savedInstanceState.putLong("timeSwapBuff",timeSwapBuff);
+
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -300,61 +311,51 @@ public class GameActivity extends Activity implements View.OnClickListener, View
     }
 
     public void displayPrompt(View v){
-        Log.d("TEST","RUNNN");
-
-        // get prompts.xml view
-        LayoutInflater li = LayoutInflater.from(context);
-        View promptsView = li.inflate(R.layout.prompt, null);
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                context);
-
-        // set prompts.xml to alertdialog builder
-        alertDialogBuilder.setView(promptsView);
-
-        final String userInput = "PERDU";
-
+        LayoutInflater factory = LayoutInflater.from(this);
+        final View textEntryView = factory.inflate(R.layout.editscores_info, null);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
         String title = "";
         if(winner){
-            title = getString(R.string.winner);
+            alert.setTitle(getString(R.string.winner));
         }else{
-            title = getString(R.string.looser);
+            alert.setTitle(getString(R.string.looser));
         }
+        alert.setMessage("Nickname :");
+        alert.setView(textEntryView);
 
-        final EditText input = new EditText(GameActivity.this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        input.setLayoutParams(lp);
-        input.setText("Nickname");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
 
-        // set dialog message
-        alertDialogBuilder
-                .setTitle(title)
-                .setView(input)
-                .setCancelable(false)
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // get user input and set it to result
-                                // edit text
-                                result.setText(userInput);
-                            }
-                        });
+                // On récupère ce qui a été saisie par l'utilisateur
+                EditText mUserText;
+                mUserText = (EditText) textEntryView.findViewById(R.id.newPseudo);
+                nickName = mUserText.getText().toString();
 
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
+                //Création d'un SCORE
+                Scores score1 = new Scores(nickName, nbrCells, nbrMines,timerValueString,winner?"WIN":"LOOSE");
 
+                //On ouvre la base de données pour écrire dedans
+                scoresBDD.open();
+                //On insère le score que l'on vient de créer
+                scoresBDD.insertScore(score1);
 
-        //
+                scoresBDD.close();
 
+                onBackPressed();
 
+                return;
+            }
+        });
 
-        //
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
-        // show it
-        alertDialog.show();
-
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                onBackPressed();
+                return;
+            }
+        });
+        alert.show();
     }
 
     private Runnable updateTimerThread = new Runnable() {
@@ -365,6 +366,7 @@ public class GameActivity extends Activity implements View.OnClickListener, View
             int mins = secs / 60;
             secs = secs % 60;
             timerValue.setText("" + mins + ":"+ String.format("%02d", secs));
+            timerValueString = "" + mins + ":"+ String.format("%02d", secs);
             customHandler.postDelayed(this, 0);
         }
     };

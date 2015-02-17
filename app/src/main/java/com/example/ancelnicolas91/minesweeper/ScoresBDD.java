@@ -79,9 +79,31 @@ public class ScoresBDD {
         return bdd.update(TABLE_SCORES, values, _ID + " = " +id, null);
     }
 
-    public int removeScoreWithID(int id){
+    public void removeScoreWithID(long id){
         //Suppression d'un livre de la BDD grâce à l'ID
-        return bdd.delete(TABLE_SCORES, _ID + " = " +id, null);
+        bdd.delete(TABLE_SCORES, _ID + " = " +id, null);
+    }
+
+    public Cursor queueAll() {
+        return bdd.rawQuery("SELECT _id, Pseudo, Cases, Mines, Time, Win FROM table_scores ;", null);
+    }
+
+    public Cursor getScoreById(int id) {
+        return bdd.rawQuery("SELECT _id, Pseudo, Cases, Mines, Time, Win FROM table_scores where _id="+ id +";", null);
+    }
+
+    public void updatePseudoById(long id, String newPseudo) {
+        Cursor c =  bdd.rawQuery("SELECT _id, Pseudo, Cases, Mines, Time, Win FROM table_scores where _id="+ id +";", null);
+        c.moveToFirst();
+        Scores tmpScore = new Scores();
+
+        tmpScore.setId(c.getInt(NUM_COL_ID));
+        tmpScore.setPseudo(newPseudo);
+        tmpScore.setCases(c.getInt(NUM_COL_CASES));
+        tmpScore.setMines(c.getInt(NUM_COL_MINES));
+        tmpScore.setTime(c.getString(NUM_COL_TIME));
+        tmpScore.setWin(c.getString(NUM_COL_WIN));
+        updateScore(c.getInt(NUM_COL_ID),tmpScore);
     }
 
     //Cette méthode permet de convertir un cursor en un score
@@ -100,7 +122,7 @@ public class ScoresBDD {
         scores.setCases(c.getInt(NUM_COL_CASES));
         scores.setMines(c.getInt(NUM_COL_MINES));
         scores.setTime(c.getString(NUM_COL_TIME));
-        scores.setWin(c.getInt(NUM_COL_WIN) > 0);
+        scores.setWin(c.getString(NUM_COL_WIN));
 
         //On ferme le cursor
         c.close();
@@ -113,7 +135,19 @@ public class ScoresBDD {
     public Cursor getAllScores(){
         Cursor mCursor = bdd.query(TABLE_SCORES, new String[] {KEY_ROWID,
                         COL_PSEUDO, COL_CASES, COL_MINES, COL_TIME, COL_WIN},
-                null, null, null, null, null);
+                null, null, null, null, KEY_ROWID + " DESC");
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    //Cette méthode permet de convertir un cursor en un score
+    public Cursor getScoreByPseudo(String pseudo){
+        Cursor mCursor = bdd.query(TABLE_SCORES, new String[] {KEY_ROWID,
+                        COL_PSEUDO, COL_CASES, COL_MINES, COL_TIME, COL_WIN},
+               COL_PSEUDO + " LIKE '%" + pseudo + "%'", null, null, null, KEY_ROWID + " DESC");
 
         if (mCursor != null) {
             mCursor.moveToFirst();

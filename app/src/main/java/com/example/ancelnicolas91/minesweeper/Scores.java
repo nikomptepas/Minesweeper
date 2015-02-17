@@ -10,11 +10,11 @@ public class Scores {
     private Integer cases;
     private Integer mines;
     private String time;
-    private Boolean win;
+    private String win;
 
     public Scores(){}
 
-    public Scores(String pseudo, Integer cases, Integer mines, String time, Boolean win){
+    public Scores(String pseudo, Integer cases, Integer mines, String time, String win){
         this.pseudo = pseudo;
         this.cases = cases;
         this.mines = mines;
@@ -62,11 +62,11 @@ public class Scores {
         this.time = time;
     }
 
-    public Boolean getWin() {
+    public String getWin() {
         return win;
     }
 
-    public void setWin(Boolean win) {
+    public void setWin(String win) {
         this.win = win;
     }
 
