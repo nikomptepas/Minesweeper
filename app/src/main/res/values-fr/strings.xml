@@ -6,6 +6,8 @@
     <string name="play">Jouer</string>
     <string name="scores">Scores</string>
     <string name="rules">Règles</string>
+    <string name="title_activity_rules">RulesActivity</string>
+    <string name="title_activity_custom">CustomActivity</string>
 
     <string name="object_title">Objectif</string>
     <string name="object">Découvrez les cases vides en évitant les mines. Plus vite vous aurez terminé, meilleur sera votre score.</string>
