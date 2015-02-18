@@ -115,14 +115,22 @@ public class GameActivity extends Activity implements View.OnClickListener, View
                 }
                 else if(currentCell.isFlaged())
                 {
-                    if(currentCell.isMined())
+                    if(gameover)
                     {
-                        cell.setImageResource(R.drawable.cells_false);
+                        if(currentCell.isMined())
+                        {
+                            cell.setImageResource(R.drawable.cells_flag);
+                        }
+                        else
+                        {
+                            cell.setImageResource(R.drawable.cells_false);
+                        }
                     }
                     else
                     {
                         cell.setImageResource(R.drawable.cells_flag);
                     }
+
                 }
                 else
                 {
